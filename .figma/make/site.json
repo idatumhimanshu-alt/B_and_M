@@ -1,0 +1,10 @@
+{
+  "description": "Effortlessly analyze and summarize Markdown files, providing users with insights and key information to enhance productivity and streamline documentation.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

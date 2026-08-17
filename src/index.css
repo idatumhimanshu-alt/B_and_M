@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-paper: #f9f7f4;
+  --color-mist: #e8e5e2;
+  --color-ink: #2c2a28;
+  --color-forest: #4b5d52;
+  --color-earth: #705f52;
+
+  --font-display: 'Archivo Expanded', 'Archivo', sans-serif;
+  --font-sans: 'Archivo', system-ui, sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-earth);
+  color: var(--color-paper);
+}
+
+/* Hide scrollbars until scrolling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
