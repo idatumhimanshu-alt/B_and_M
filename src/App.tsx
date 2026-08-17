@@ -200,12 +200,12 @@ const cards = [
   {
     icon: <MicIcon />,
     title: 'Conversations over Catalogs',
-    body: 'Every mandate starts with an unfiltered conversation about the land, the flat, or the future you are trying to build — not a filtered grid of listings.',
+    body: 'Every conversation starts with an honest discussion about the land, the flat, or the future you are trying to build — not a filtered grid of listings.',
   },
   {
     icon: <HandshakeIcon />,
     title: 'Reputation over Reach',
-    body: 'Two decades across Pune and the Konkan belt built on referrals and repeat families. We trade on trust, not paid impressions.',
+    body: 'More than a decade across Pune and the Konkan belt built on referrals and repeat families. We trade on trust, not paid impressions.',
   },
   {
     icon: <TargetIcon />,
@@ -405,12 +405,12 @@ export default function App() {
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-14 px-6 py-24 md:grid-cols-12 md:px-12 md:py-36">
           <div className="md:col-span-5">
             <h2 className="font-display text-4xl font-[800] uppercase leading-[1.02] tracking-[-0.01em] md:text-6xl">
-              Tell Us<br />What<br />You&rsquo;re<br />Chasing.
+              Tell Us<br />What<br />You Have<br />in Mind.
             </h2>
             <p className="mt-8 max-w-md font-serif text-lg leading-relaxed text-ink/70">
-              You aren&rsquo;t looking for a cookie-cutter vendor — you&rsquo;re looking
+              You aren&rsquo;t looking for a listing agency — you&rsquo;re looking
               for a partner. Drop your details and tell us about the land, the home,
-              or the mandate on your mind.
+              or the property on your mind.
             </p>
           </div>
 
@@ -457,7 +457,7 @@ export default function App() {
                 <Field label="Your Name / Organization" id="name" required placeholder="e.g. Kulkarni Family" />
                 <Field label="Email Address" id="email" type="email" required placeholder="you@example.com" />
                 <Field
-                  label="What are you building or looking to solve?"
+                  label="Tell us more about what you need"
                   id="message"
                   multiline
                   placeholder="A sea-facing plot near Guhagar, a 3BHK in Baner, property management for a portfolio…"
@@ -529,7 +529,7 @@ export default function App() {
             <span className="font-display text-sm font-[700] not-italic uppercase tracking-[0.18em]">
               Broker&nbsp;&amp;&nbsp;Manager
             </span>
-            &nbsp;— Managing Land, Flats &amp; Advisory. Since {YEAR} ©
+            &nbsp;— Brokerage, Management &amp; Advisory. Since {YEAR} ©
           </p>
         </div>
       </footer>
