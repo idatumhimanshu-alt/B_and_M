@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import React, { useState, type FormEvent } from 'react'
 
 const YEAR = 2014
 
@@ -184,7 +184,10 @@ function NALandArt() {
   )
 }
 
-const propertyTypes = [
+const PROPERTY_LABELS = ['Flats', 'Buildings', 'Villas & Bungalows', 'Farmhouses', 'Farmland', 'NA Land'] as const
+type PropertyLabel = (typeof PROPERTY_LABELS)[number]
+
+const propertyTypes: Array<{ art: React.ReactNode; title: PropertyLabel; note: string; tile: string }> = [
   { art: <FlatsArt />, title: 'Flats', note: '1–4 BHK · Pune corridors', tile: 'bg-mist text-ink ring-1 ring-ink/10' },
   { art: <BuildingsArt />, title: 'Buildings', note: 'Commercial & mixed-use', tile: 'bg-forest text-paper' },
   { art: <VillaArt />, title: 'Villas & Bungalows', note: 'Gated & standalone', tile: 'bg-ink text-paper' },
@@ -213,10 +216,17 @@ const cards = [
 
 export default function App() {
   const [submitted, setSubmitted] = useState(false)
+  const [selectedType, setSelectedType] = useState<PropertyLabel | null>(null)
+
+  const handlePropertyClick = (title: PropertyLabel) => {
+    setSelectedType(title)
+    document.getElementById('enquiry')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setSubmitted(true)
+    setSelectedType(null)
   }
 
   return (
@@ -358,13 +368,21 @@ export default function App() {
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {propertyTypes.map((p, i) => (
-              <article
+              <button
                 key={p.title}
-                className={`group flex aspect-[5/4] flex-col justify-between p-7 transition-transform duration-300 hover:-translate-y-1 md:p-8 ${p.tile}`}
+                type="button"
+                aria-pressed={selectedType === p.title}
+                onClick={() => handlePropertyClick(p.title)}
+                className={`group flex aspect-[5/4] w-full cursor-pointer flex-col justify-between p-7 text-left transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest md:p-8 ${p.tile} ${selectedType === p.title ? 'ring-2 ring-inset ring-forest' : ''}`}
               >
-                <span className="font-sans text-[11px] font-[600] tracking-[0.22em] opacity-50">
-                  0{i + 1}
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="font-sans text-[11px] font-[600] tracking-[0.22em] opacity-50">
+                    0{i + 1}
+                  </span>
+                  <span className="font-sans text-[10px] font-[600] uppercase tracking-[0.2em] opacity-0 transition-opacity duration-200 group-hover:opacity-70">
+                    Enquire →
+                  </span>
+                </div>
                 <div className="flex flex-1 items-center justify-center py-4 transition-transform duration-300 group-hover:scale-[1.04]">
                   {p.art}
                 </div>
@@ -376,7 +394,7 @@ export default function App() {
                     {p.note}
                   </p>
                 </div>
-              </article>
+              </button>
             ))}
           </div>
         </div>
@@ -409,6 +427,33 @@ export default function App() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-10">
+                <input type="hidden" name="propertyType" value={selectedType ?? ''} />
+                {/* Property type selector */}
+                <fieldset>
+                  <legend className="mb-4 block font-sans text-[11px] font-[600] uppercase tracking-[0.28em] text-ink/55">
+                    I&rsquo;m interested in
+                  </legend>
+                  <div className="flex flex-wrap gap-2">
+                    {PROPERTY_LABELS.map((label) => {
+                      const active = selectedType === label
+                      return (
+                        <button
+                          key={label}
+                          type="button"
+                          aria-pressed={active}
+                          onClick={() => setSelectedType(active ? null : label)}
+                          className={`border px-4 py-2 font-sans text-[11px] font-[600] uppercase tracking-[0.2em] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest ${
+                            active
+                              ? 'border-forest bg-forest text-paper'
+                              : 'border-ink/25 bg-transparent text-ink/70 hover:border-forest hover:text-forest'
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </fieldset>
                 <Field label="Your Name / Organization" id="name" required placeholder="e.g. Kulkarni Family" />
                 <Field label="Email Address" id="email" type="email" required placeholder="you@example.com" />
                 <Field
