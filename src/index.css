@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -24,6 +25,7 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -31,8 +33,8 @@ body {
   color: var(--color-paper);
 }
 
-/* Hide scrollbars until scrolling */
+/* Custom smooth scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+  scrollbar-color: rgba(44, 42, 40, 0.2) transparent;
 }
