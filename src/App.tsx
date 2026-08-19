@@ -185,7 +185,21 @@ function NALandArt() {
   )
 }
 
-const PROPERTY_LABELS = ['Flats', 'Buildings', 'Villas & Bungalows', 'Farmhouses', 'Farmland', 'NA Land'] as const
+function InvestmentsArt() {
+  return (
+    <svg viewBox="0 0 160 120" className="h-24 w-auto" aria-hidden="true" {...sketchProps}>
+      <path d="M16 104h128" strokeWidth={2} />
+      <path d="M24 88l32-28 32 16 48-44" />
+      <path d="M104 32h32v32" />
+      <circle cx="24" cy="88" r="4" fill="currentColor" stroke="none" />
+      <circle cx="56" cy="60" r="4" fill="currentColor" stroke="none" />
+      <circle cx="88" cy="76" r="4" fill="currentColor" stroke="none" />
+      <circle cx="136" cy="32" r="4" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+const PROPERTY_LABELS = ['Flats', 'Buildings', 'Villas & Bungalows', 'Farmhouses', 'Farmland', 'NA Land', 'Investments'] as const
 type PropertyLabel = (typeof PROPERTY_LABELS)[number]
 
 const propertyTypes: Array<{ art: React.ReactNode; title: PropertyLabel; note: string; bandBg: string; textClass: string }> = [
@@ -195,6 +209,7 @@ const propertyTypes: Array<{ art: React.ReactNode; title: PropertyLabel; note: s
   { art: <FarmhouseArt />, title: 'Farmhouses', note: 'Coastal & scenic belts', bandBg: 'bg-ink', textClass: 'text-paper' },
   { art: <FarmlandArt />, title: 'Farmland', note: 'Cultivable & orchard plots', bandBg: 'bg-forest', textClass: 'text-paper' },
   { art: <NALandArt />, title: 'NA Land', note: 'Sanctioned non-agricultural', bandBg: 'bg-earth', textClass: 'text-paper' },
+  { art: <InvestmentsArt />, title: 'Investments', note: 'Opportunities & joint ventures', bandBg: 'bg-forest', textClass: 'text-paper' },
 ]
 
 const cards = [
@@ -350,7 +365,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 3 — What We Handle */}
+      {/* 3 — What We Handle (7 Categories) */}
       <section className="border-t border-ink/15">
         <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 md:px-12 md:py-32">
           <div className="mb-14 md:flex md:items-end md:justify-between">
@@ -358,7 +373,7 @@ export default function App() {
               What We Handle.
             </h2>
             <p className="mt-3 max-w-xs font-sans text-[11px] font-[600] uppercase tracking-[0.28em] text-ink/75 md:mt-0">
-              Six categories / one standard of care
+              Seven categories / one standard of care
             </p>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
