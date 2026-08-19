@@ -188,7 +188,6 @@ function NALandArt() {
 const PROPERTY_LABELS = ['Flats', 'Buildings', 'Villas & Bungalows', 'Farmhouses', 'Farmland', 'NA Land'] as const
 type PropertyLabel = (typeof PROPERTY_LABELS)[number]
 
-// Premium Brand Palette for the Category Bands: Deep Ink, Forest Green, Warm Earth
 const propertyTypes: Array<{ art: React.ReactNode; title: PropertyLabel; note: string; bandBg: string; textClass: string }> = [
   { art: <FlatsArt />, title: 'Flats', note: '1–4 BHK · Prime corridors', bandBg: 'bg-ink', textClass: 'text-paper' },
   { art: <BuildingsArt />, title: 'Buildings', note: 'Commercial & mixed-use', bandBg: 'bg-forest', textClass: 'text-paper' },
@@ -351,7 +350,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 3 — What We Handle (Uniform background with Premium Brand Bands) */}
+      {/* 3 — What We Handle */}
       <section className="border-t border-ink/15">
         <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 md:px-12 md:py-32">
           <div className="mb-14 md:flex md:items-end md:justify-between">
@@ -373,7 +372,6 @@ export default function App() {
                   onClick={() => handlePropertyClick(p.title)}
                   className={`group flex aspect-[5/4] w-full cursor-pointer flex-col justify-between p-0 text-left transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest bg-mist ring-1 ring-ink/10 overflow-hidden ${active ? 'ring-2 ring-forest' : ''}`}
                 >
-                  {/* Top Bar: Index & Action */}
                   <div className="flex items-center justify-between p-6 pb-0 sm:p-7 sm:pb-0">
                     <span className="font-sans text-[11px] font-[600] tracking-[0.22em] text-ink/50">
                       0{i + 1}
@@ -383,12 +381,10 @@ export default function App() {
                     </span>
                   </div>
 
-                  {/* Middle: Architectural Art */}
                   <div className="flex flex-1 items-center justify-center py-2 transition-transform duration-300 group-hover:scale-[1.04] text-ink">
                     {p.art}
                   </div>
 
-                  {/* Bottom: Premium Brand Color Band */}
                   <div className={`w-full ${p.bandBg} p-6 sm:p-7 ${p.textClass}`}>
                     <h3 className="font-display text-lg font-[700] uppercase leading-tight tracking-[-0.01em] md:text-xl">
                       {p.title}

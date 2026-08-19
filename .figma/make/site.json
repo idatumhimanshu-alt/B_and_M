@@ -1,10 +1,4 @@
 {
-  "description": "Effortlessly analyze and summarize Markdown files, providing users with insights and key information to enhance productivity and streamline documentation.",
-  "robots": {
-    "index": false
-  },
-  "accessibility": {
-    "addBypassLinks": false,
-    "ignoreReducedMotion": false
-  }
+  "title": "Broker & Manager — Brokerage, Management & Advisory",
+  "description": "Headquartered in Pune, Broker & Manager provides expert real estate advisory, land acquisition, and property management with absolute transparency and trust."
 }
